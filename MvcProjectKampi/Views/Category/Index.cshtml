@@ -1,56 +1,40 @@
-﻿
+﻿@using EntityLayer.Concrete
+@model List<Category>
 @{
     ViewBag.Title = "Kategori Listesi";
 }
-
-<h2>Mvc Kamp Tablo Örneği</h2>
-<br />
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th scope="col">No</th>
-            <th scope="col">Başlık</th>
-            <th scope="col">Açıklama</th>
-            <th scope="col">Durum</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Eğitim</td>
-            <td>Burası Eğitim Kategorisi</td>
-            <td>Aktif</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Tiyatro</td>
-            <td>Burası Tiyatro Kategorisi</td>
-            <td>Aktif</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Kitap</td>
-            <td></td>
-            <td>Aktif</td>
-        </tr>
-        <tr>
-            <th scope="row">4</th>
-            <td>Spor</td>
-            <td></td>
-            <td>Aktif</td>
-        </tr>
-        <tr>
-            <th scope="row">5</th>
-            <td>Film</td>
-            <td></td>
-            <td>Aktif</td>
-        </tr>
-        <tr>
-            <th scope="row">6</th>
-            <td>Dizi</td>
-            <td></td>
-            <td>Aktif</td>
-        </tr>
-    </tbody>
-</table>
-
+@Html.ActionLink("Kategori Ekle","Add","Category", null, new { @class= "btn btn-primary" })
+@Html.ActionLink("Kategori Listesi","GetCategoryList","Category", null, new { @class="btn btn-warning"})
+<br /><br />
+@if (@Model.Count > 0)
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">No</th>
+                <th scope="col">Başlık</th>
+                <th scope="col">Açıklama</th>
+                <th scope="col">Durum</th>
+                <th scope="col">-</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var categoryItem in Model)
+            {
+                <tr>
+                    <th scope="row">@categoryItem.Id</th>
+                    <td>@categoryItem.Name</td>
+                    <td>@categoryItem.Description</td>
+                    <td>@categoryItem.isActive</td>
+                    <td><a href="/@categoryItem.Id" class="btn btn-primary">Düzenle</a> &nbsp; <a href="/@categoryItem.Id" class="btn btn-warning">Sil</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-info">
+        <p>Henüz bir kategori eklenmemiştir.</p>
+    </div>
+}

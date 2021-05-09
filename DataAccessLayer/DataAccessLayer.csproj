@@ -58,6 +58,12 @@
     <Compile Include="Abstract\IAboutDal.cs" />
     <Compile Include="Abstract\ICategoryDal.cs" />
     <Compile Include="Abstract\IEntityRepository.cs" />
+    <Compile Include="Concrete\EntityFramework\EfAboutDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EfCategoryDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EfContactDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EfContentDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EfHeadingDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EfWriterDal.cs" />
     <Compile Include="Concrete\ProjeDbContext.cs" />
     <Compile Include="Concrete\Repositories\CategoryRepository.cs" />
     <Compile Include="Concrete\Repositories\GenericRepository.cs" />

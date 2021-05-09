@@ -1,0 +1,75 @@
+﻿@using EntityLayer.Concrete
+@model List<Category>
+@{
+    ViewBag.Title = "Kategoriler";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@section styles {
+    <!-- DataTables -->
+    <link rel="stylesheet" href="~/Content/_adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/Content/_adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">DataTable with default features</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Başlık</th>
+                            <th>Açıklama</th>
+                            <th>Durum</th>
+                            <th>-</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var categoryItem in Model)
+                        {
+                            <tr>
+                                <th scope="row">@categoryItem.Id</th>
+                                <td>@categoryItem.Name</td>
+                                <td>@categoryItem.Description</td>
+                                <td>@categoryItem.isActive</td>
+                                <td>
+                                    <a href="/@categoryItem.Id" class="btn btn-info">Başlıklar</a> &nbsp; 
+                                    <a href="/@categoryItem.Id" class="btn btn-primary">Düzenle</a> &nbsp; 
+                                    <a href="/@categoryItem.Id" class="btn btn-warning">Sil</a>
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                        
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container-fluid -->
+@section scripts{
+    <!-- DataTables  & Plugins -->
+    <script src="~/Content/_adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Content/_adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Content/_adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Content/_adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script type="text/javascript">
+    $(function () {
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true,
+                "autoWidth": false,
+            })
+        });
+        </script>
+}

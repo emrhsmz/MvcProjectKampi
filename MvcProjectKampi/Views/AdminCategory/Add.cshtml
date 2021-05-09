@@ -1,0 +1,55 @@
+﻿@using EntityLayer.Concrete
+@model Category
+@{
+    ViewBag.Title = "Kategori Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Quick Example</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                @using (Html.BeginForm("Add", "AdminCategory", FormMethod.Post, new { @class = "form-horizontal" }))
+                {
+                    <div class="card-body">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Name, null, new { @class = "col-sm-2" })
+                            <div class="col-sm-10">
+                                @Html.TextBoxFor(m => m.Name, null, new { @class = "form-control", @placeholder = "Kategori Adı Giriniz" })
+                                @Html.ValidationMessageFor(m => m.Name, null, new { @class = "help-block text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Description, null, new { @class = "col-sm-2" })
+                            <div class="col-sm-10">
+                                @Html.TextBoxFor(m => m.Description, null, new { @class = "form-control", @placeholder = "Katgori Açıklaması Giriniz" })
+                                @Html.ValidationMessageFor(m => m.Description, null, new { @class = "help-block text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-check">
+                            @Html.CheckBoxFor(model => model.isActive,new { @class = "form-check-input" })
+                            <label class="form-check-label" for="isActive">Aktif Mi</label>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Ekle</button>
+                    </div>
+                }
+            </div>
+            <!-- /.card -->
+        </div>
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,38 @@
+﻿@using EntityLayer.Concrete
+@model List<Category>
+@{
+    ViewBag.Title = "GetCategoryList";
+}
+
+@if (@Model.Count > 0)
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">No</th>
+                <th scope="col">Başlık</th>
+                <th scope="col">Açıklama</th>
+                <th scope="col">Durum</th>
+                <th scope="col">-</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var categoryItem in Model)
+            {
+                <tr>
+                    <th scope="row">@categoryItem.Id</th>
+                    <td>@categoryItem.Name</td>
+                    <td>@categoryItem.Description</td>
+                    <td>@categoryItem.isActive</td>
+                    <td><a href="/@categoryItem.Id" class="btn btn-primary">Düzenle</a> &nbsp; <a href="/@categoryItem.Id" class="btn btn-warning">Sil</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-info">
+        <p>Henüz bir kategori eklenmemiştir.</p>
+    </div>
+}
